@@ -1,22 +1,27 @@
 {
   "name": "dbms-mini-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "fifa player management",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsunar/DBMS-mini-Project.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rsunar/DBMS-mini-Project/issues"
+  },
+  "homepage": "https://github.com/rsunar/DBMS-mini-Project#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
-    "dotenv": "^10.0.0",
     "express": "^4.17.2",
-    "global": "^4.4.0",
+    "express-handlebars": "^6.0.2",
     "mysql": "^2.18.1",
-    "mysql2": "^2.3.3",
     "nodemon": "^2.0.15"
   }
 }
