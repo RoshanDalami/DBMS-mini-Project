@@ -7,7 +7,6 @@ router.post('/', playerControllers.find);
 
 router.get('/addplayer', playerControllers.player);
 router.post('/addplayer', playerControllers.addplayer);
-router.get('/editplayer/:id',playerControllers.editplayer);
 
 
 

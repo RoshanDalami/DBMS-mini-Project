@@ -10,13 +10,13 @@ const app = express();
 //parsing middleware
 //parsing application /x-www-form url-encoded
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(express.urlencoded({ extended: false }));
+const handlebars = exphbs.create({extname:'.hbs'})
 //static files
 app.use(express.static('public'));
 //templeting engines
-app.engine('hbs', exphbs.engine({ extname: '.hbs' })); // setting engine to hbs
-app.set('view engine', 'hbs');
+app.engine('.hbs', handlebars.engine); // setting engine to hbs
+app.set('view engine', '.hbs');
 app.set('views', './views');
 
 

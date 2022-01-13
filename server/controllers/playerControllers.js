@@ -36,7 +36,7 @@ exports.find = (request,response)=>{
         console.log('connected to database...')
         let searchTerm = request.body.search;
         //user connection
-        connection.query('SELECT * FROM PLAYERS WHERE player_name LIKE ? OR player_id LIKE ?',['%'+searchTerm+'%','%'+searchTerm+'%'],(err,rows)=>{
+        connection.query('SELECT * FROM PLAYERS WHERE player_name LIKE ? OR player_id LIKE ? OR age LIKE ? OR overall_rating LIKE ? OR nationality LIKE ? OR in_contract LIKE ? OR position LIKE ?',['%'+searchTerm+'%','%'+searchTerm+'%','%'+searchTerm+'%','%'+searchTerm+'%','%'+searchTerm+'%','%'+searchTerm+'%','%'+searchTerm+'%'],(err,rows)=>{
             //when done with connection release it
             connection.release();
             if(!err){
@@ -74,46 +74,3 @@ exports.addplayer =(request,response)=>{
     });
 };
 
-exports.editplayer =(request,response)=>{
-    // response.render('editplayer')
-    const player_id = request.params.player_id
-    pool.getConnection((err,connection)=>{
-        if(err) throw err; //if error
-        console.log('connected to database...')
-
-        //user connection
-        connection.query('SELECT * FROM PLAYERS WHERE player_id=?',[player_id],(err,rows)=>{
-            //when done with connection release it
-            connection.release();
-            if(!err){
-                response.render('editplayer',{rows});
-            }else{
-                console.log(err)
-            }
-            console.log("the data from player:\n",rows)
-        });
-    });
-
-}
-//update Player
-exports.update =(request,response)=>{
-    // response.render('editplayer')
-    const {player_name,age,overall_rating,nationality,in_contract,position}=request.body;
-    pool.getConnection((err,connection)=>{
-        if(err) throw err; //if error
-        console.log('connected to database...')
-
-        //user connection
-        connection.query('UPDATE PLAYERS SET player_name=?,age=?,overall_rating=?,nationality=?,in_contract=?,position=? WHERE player_id=?',[player_name,age,overall_rating,nationality,in_contract,position,request.params.player_id],(err,rows)=>{
-            //when done with connection release it
-            connection.release();
-            if(!err){
-                response.render('editplayer',{rows});
-            }else{
-                console.log(err)
-            }
-            console.log("the data from player:\n",rows)
-        });
-    });
-
-}
