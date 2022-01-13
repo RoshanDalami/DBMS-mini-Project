@@ -1,0 +1,42 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View Player</li>
+  </ol>
+</nav>
+<div class="view-player p-5">
+
+{{#each rows}}
+<div class="row mb-5">
+    <div class="col text-center">
+        <h2>{{this.player_name}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Player Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Overall Rating</th>
+            <th scope="col">Nationality</th>
+            <th scope="col">In Contract</th>
+            <th scope="col">Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{this.player_name}}</th>
+            <td>{{this.age}}</td>
+            <td>{{this.overall_rating}}</td>
+            <td>{{this.nationality}}</td>
+            <td>{{this.contract}}</td>
+            <td>{{this.position}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+{{/each}}
+</div>
