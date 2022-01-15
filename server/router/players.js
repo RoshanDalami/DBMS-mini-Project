@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.get('/', playerControllers.view);
 router.post('/', playerControllers.find);
+// router.post('/', playerControllers.findByClub);
 
 
 router.get('/addplayer', playerControllers.player);
