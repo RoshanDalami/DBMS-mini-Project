@@ -149,22 +149,67 @@ exports.update =(request,response)=>{
         });
     });
 }
+exports.project =(request,response)=>{
+    response.render('aboutproject')
+ }
+exports.college =(request,response)=>{
+    response.render('aboutcollege')
+ }
+exports.editplayers =(request,response)=>{
+    pool.getConnection((err,connection)=>{
+        if(err) throw err; //if error
+        console.log('connected to database...')
 
+        //user connection
+        connection.query('SELECT * FROM PLAYERS',(err,rows)=>{
+            //when done with connection release it
+            connection.release();
+            if(!err){
+                let removedPlayer = request.query.removed;
+      response.render('editplayers', { rows, removedPlayer });
+            }else{
+                console.log(err)
+            }
+            console.log("the data from player:\n",rows)
+        });
+    });
+    
+ }
+exports.deletepage = (request,response)=>{
+    pool.getConnection((err,connection)=>{
+        if(err) throw err; //if error
+        console.log('connected to database...')
 
+        //user connection
+        connection.query('SELECT * FROM PLAYERS',(err,rows)=>{
+            //when done with connection release it
+            connection.release();
+            if(!err){
+                let removedPlayer = request.query.removed;
+      response.render('deleteplayer', { rows, removedPlayer });
+            }else{
+                console.log(err)
+            }
+            console.log("the data from player:\n",rows)
+        });
+    });
+    
+}
 //delete player
 exports.delete =(request,response)=>{
     // response.render('editplayer')
     pool.getConnection((err,connection)=>{
         if(err) throw err; //if error
         console.log('connected to database...')
-
+        
         //user connection
         connection.query('DELETE FROM PLAYERS WHERE id = ?',[request.params.id],(err,rows)=>{
             //when done with connection release it
             connection.release();
             if(!err){
+                
                 let removedPlayer = encodeURIComponent('User successeflly removed.');
-                response.redirect('/?removed=' + removedPlayer);
+                response.redirect('/deleteplayer/?removed=' + removedPlayer);
             }else{
                 console.log(err)
             }
@@ -192,3 +237,4 @@ exports.viewall = (request,response)=>{
         });
     });
 };
+

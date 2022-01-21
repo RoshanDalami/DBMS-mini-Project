@@ -1,0 +1,16 @@
+  <tr>
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.player_name}}</td>
+      <td>{{this.age}}</td>
+      <td>{{this.position}}</td>
+      <td>{{this.club}}</td>
+      <td>{{this.goal}}</td>
+      <td>{{this.overall_rating}}</td>
+      <td>{{this.nationality}}</td>
+      <td>{{this.contract}}</td> 
+        <td class="text-end">
+            <a href="/viewplayer/{{this.id}}" type="button" class="btn btn-primary btn-small"><i class="bi bi-eye"></i> view</a>
+            <a href="/editplayer/{{this.id}}" type="button" class="btn btn-success btn-small"><i class="bi bi-pencil"></i> Edit</a>
+            <a href="/{{this.id}}" type="button" class="btn btn-danger btn-small"><i class="bi bi-person-x"></i> Delete</a>
+        </td>
+      </tr>
