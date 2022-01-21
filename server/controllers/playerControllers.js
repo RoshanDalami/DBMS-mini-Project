@@ -11,6 +11,8 @@ const pool = mysql.createPool({
 //connect to database
 
 
+
+
 exports.view = (request,response)=>{
     pool.getConnection((err,connection)=>{
         if(err) throw err; //if error

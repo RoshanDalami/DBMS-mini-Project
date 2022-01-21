@@ -1,1 +1,3 @@
 CREATE TABLE `DBMSminiProject`.`PLAYERS` ( `id` INT NOT NULL AUTO_INCREMENT , `player_name` VARCHAR(30) NOT NULL , `age` INT(2) NOT NULL , `overall_rating` INT NOT NULL , `nationality` VARCHAR(30) NOT NULL , `contract` INT(10) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `DBMSminiProject`.`ADMIN` ( `username` VARCHAR(30) NOT NULL , `password` VARCHAR(30) NOT NULL ) ENGINE = InnoDB;

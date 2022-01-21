@@ -2,6 +2,7 @@ const express = require('express');
 const playerControllers = require('../controllers/playerControllers')
 const router = express.Router();
 
+
 router.get('/', playerControllers.view);
 router.post('/', playerControllers.find);
 // router.post('/', playerControllers.findByClub);

@@ -14,3 +14,26 @@
             <a href="/{{this.id}}" type="button" class="btn btn-danger btn-small"><i class="bi bi-person-x"></i> Delete</a>
         </td>
       </tr>
+
+
+      exports.loginpage = (request,response)=>{
+    response.render('index')
+}
+exports.login = (request,response)=>{
+    let{username,password} = request.body;
+    pool.getConnection((err,connection)=>{
+        if(err) throw err;
+        console.log('connected to database');
+        connection.query('SELECT * FROM ADMIN WHERE username = ? AND password = ?',[username,password],(error,results)=>{
+            connection.release();
+            if(results.length > 0){
+                response.render('welcome')
+            }else{
+                response.redirect('/');
+            }
+        })
+    });
+}
+exports.welcome = (request,response)=>{
+response.render('welcome')
+}

@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const exphbs = require('express-handlebars');
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5005;
 const app = express();
 
 
@@ -38,7 +38,8 @@ pool.getConnection((err,result)=>{
     if(err) throw err; //if error
     console.log('connected to database...')
 });
-
+// const login = require('./server/router/admin');
+// app.use('/',login)
 
 //acquiring routes path 
 const routes = require('./server/router/players');
