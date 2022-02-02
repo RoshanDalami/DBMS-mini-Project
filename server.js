@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const exphbs = require('express-handlebars');
 const port = process.env.PORT || 5005;
+const path = require('path');
 const app = express();
 
 
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 const handlebars = exphbs.create({extname:'.hbs'})
 //static files
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname,'public')));
 //templeting engines
 app.engine('.hbs', handlebars.engine); // setting engine to hbs
 app.set('view engine', '.hbs');
